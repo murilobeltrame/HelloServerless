@@ -21,9 +21,33 @@ provider:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
 
 functions:
-  hello:
-    handler: handler.hello
+  partyCreate:
+    handler: party.create
+    events:
+      - http: #DevSkim: ignore DS137138
+          method: post
+          path: /v1/party
+  partyList:
+    handler: party.list
     events:
       - http: #DevSkim: ignore DS137138
           method: get
-          path: hello
+          path: /v1/party
+  partyGet:
+    handler: party.get
+    events:
+      - http: #DevSkim: ignore DS137138
+          method: get
+          path: /v1/party/{id}
+  partyUpdate:
+    handler: party.update
+    events:
+      - http: #DevSkim: ignore DS137138
+          method: put
+          path: /v1/party/{id}
+  partyRemove:
+    handler: party.remote
+    events:
+      - http: #DevSkim: ignore DS137138
+          method: delete
+          path: /v1/party/{id}
