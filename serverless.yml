@@ -12,7 +12,6 @@ custom:
 # Add the serverless-webpack plugin
 plugins:
   - serverless-webpack
-
 provider:
   name: aws
   runtime: nodejs10.x
@@ -25,6 +24,6 @@ functions:
   hello:
     handler: handler.hello
     events:
-      - http:
+      - http: #DevSkim: ignore DS137138
           method: get
           path: hello
